@@ -33,7 +33,7 @@ app.post('/receive', (req, res) => {
   const { buyerId, product1Quantity, product2Quantity, totalPrice} = req.body;
 
   // 插入数据到 orders 表
-  const query = 'INSERT INTO orders (buyer_id, product1_quantity, product2_quantity, total_price) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO orders (buyer_id, product1_quantity, product2_quantity, total_price, cashier ) VALUES (?, ?, ?, ?, ?)';
   
   db.query(query, [buyerId, product1Quantity, product2Quantity, totalPrice], (error, results) => {
       if (error) {
