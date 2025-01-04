@@ -30,12 +30,12 @@ db.connect(err => {
 
 // 测试插入数据的路由
 app.post('/receive', (req, res) => {
-  const { buyerId, product1Quantity, product2Quantity, totalPrice} = req.body;
+  const { buyerId, product1Quantity, product2Quantity, totalPrice, cashier} = req.body;
 
   // 插入数据到 orders 表
-  const query = 'INSERT INTO orders (buyer_id, product1_quantity, product2_quantity, total_price) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO orders (buyer_id, product1_quantity, product2_quantity, total_price, cashier) VALUES (?, ?, ?, ?, ?)';
   
-  db.query(query, [buyerId, product1Quantity, product2Quantity, totalPrice], (error, results) => {
+  db.query(query, [buyerId, product1Quantity, product2Quantity, totalPrice, cashier], (error, results) => {
       if (error) {
           console.error('Error inserting order:', error);
           return res.status(500).json({ message: 'Error inserting order', error });
